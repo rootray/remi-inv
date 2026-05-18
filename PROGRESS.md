@@ -11,12 +11,12 @@
 ## Phases
 
 ### Phase 1 — Foundation
-- [ ] Component: db-session — Database connection pool and session factory
-- [ ] Component: db-models — SQLAlchemy ORM models (User, AlpacaCredential, Rule, ReinvestmentLog)
-- [ ] Component: auth-register — User sign-up, password hashing, account creation
-- [ ] Component: auth-login — Login, JWT token issuance
-- [ ] Component: auth-middleware — JWT validation on protected routes
-- [ ] Component: api-users — REST endpoints for user profile and Alpaca credentials
+- [x] Component: db-session — Database connection pool and session factory
+- [x] Component: db-models — SQLAlchemy ORM models (User, AlpacaCredential, Rule, ReinvestmentLog)
+- [x] Component: auth-register — User sign-up, password hashing, account creation
+- [x] Component: auth-login — Login, JWT token issuance
+- [x] Component: auth-middleware — JWT validation on protected routes
+- [x] Component: api-users — REST endpoints for user profile and Alpaca credentials
 
 ### Phase 2 — Alpaca Integration
 - [ ] Component: alpaca-client — Authenticated Alpaca SDK instance per user

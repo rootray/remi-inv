@@ -6,21 +6,21 @@
       "name": "auth-register",
       "file": "backend/auth/register.py",
       "purpose": "Handle user sign-up, password hashing, account creation",
-      "status": "not-started",
+      "status": "complete",
       "connects_to": ["db-models", "db-session"]
     },
     {
       "name": "auth-login",
       "file": "backend/auth/login.py",
       "purpose": "Handle login, issue JWT tokens",
-      "status": "not-started",
+      "status": "complete",
       "connects_to": ["db-models", "db-session"]
     },
     {
       "name": "auth-middleware",
       "file": "backend/auth/middleware.py",
       "purpose": "Validate JWT on protected routes",
-      "status": "not-started",
+      "status": "complete",
       "connects_to": ["auth-login"]
     },
     {
@@ -69,7 +69,7 @@
       "name": "api-users",
       "file": "backend/api/users.py",
       "purpose": "REST endpoints: get/update user profile and Alpaca credentials",
-      "status": "not-started",
+      "status": "complete",
       "connects_to": ["auth-middleware", "db-models", "db-session"]
     },
     {
@@ -90,14 +90,14 @@
       "name": "db-models",
       "file": "backend/db/models.py",
       "purpose": "SQLAlchemy ORM models: User, AlpacaCredential, Rule, ReinvestmentLog",
-      "status": "not-started",
+      "status": "complete",
       "connects_to": ["db-session"]
     },
     {
       "name": "db-session",
       "file": "backend/db/session.py",
       "purpose": "Database connection pool and session factory",
-      "status": "not-started",
+      "status": "complete",
       "connects_to": []
     },
     {
