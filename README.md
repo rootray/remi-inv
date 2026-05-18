@@ -17,7 +17,7 @@
 ## Installation
 
 ```bash
-git clone [repo URL]
+git clone https://github.com/rootray/remi-inv
 cd drip-investing
 
 # Backend

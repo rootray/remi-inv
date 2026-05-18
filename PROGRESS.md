@@ -2,7 +2,7 @@
 
 **Platform:** Web (Next.js frontend + FastAPI backend)
 **Tech Stack:** Python 3.12, FastAPI, Celery, Redis, PostgreSQL, Next.js (React), Alpaca API
-**GitHub:** [TBD — repo not yet created]
+**GitHub:** https://github.com/rootray/remi-inv
 **Orchestration File:** backend/main.py
 **Last Updated:** 2026-05-18
 
