@@ -1,2 +1,6 @@
-# Component: alpaca-portfolio
-# Purpose: Fetch user holdings and positions from Alpaca
+from alpaca.trading.client import TradingClient
+from alpaca.trading.models import Position
+
+
+def get_positions(client: TradingClient) -> list[Position]:
+    return client.get_all_positions()

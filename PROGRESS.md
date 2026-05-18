@@ -4,7 +4,7 @@
 **Tech Stack:** Python 3.12, FastAPI, Celery, Redis, PostgreSQL, Next.js (React), Alpaca API
 **GitHub:** https://github.com/rootray/remi-inv
 **Orchestration File:** backend/main.py
-**Last Updated:** 2026-05-18
+**Last Updated:** 2026-05-18 (Phase 4 — all phases complete)
 
 ---
 
@@ -19,22 +19,23 @@
 - [x] Component: api-users — REST endpoints for user profile and Alpaca credentials
 
 ### Phase 2 — Alpaca Integration
-- [ ] Component: alpaca-client — Authenticated Alpaca SDK instance per user
-- [ ] Component: alpaca-portfolio — Fetch holdings and positions from Alpaca
-- [ ] Component: alpaca-dividends — Detect dividend activity from Alpaca account history
-- [ ] Component: alpaca-orders — Place and track reinvestment buy orders
+- [x] Component: crypto — Shared Fernet encrypt/decrypt helpers (extracted from api-users)
+- [x] Component: alpaca-client — Authenticated Alpaca SDK instance per user
+- [x] Component: alpaca-portfolio — Fetch holdings and positions from Alpaca
+- [x] Component: alpaca-dividends — Detect dividend activity from Alpaca account history
+- [x] Component: alpaca-orders — Place and track reinvestment buy orders
 
 ### Phase 3 — DRIP Automation
-- [ ] Component: rules-engine — Evaluate user rules for reinvestment decisions
-- [ ] Component: drip-scheduler — Celery periodic task: poll dividends, trigger reinvestment
-- [ ] Component: api-portfolio — REST endpoints for holdings, dividend history, reinvestment log
-- [ ] Component: api-rules — REST endpoints for CRUD on user reinvestment rules
+- [x] Component: rules-engine — Evaluate user rules for reinvestment decisions
+- [x] Component: drip-scheduler — Celery periodic task: poll dividends, trigger reinvestment
+- [x] Component: api-portfolio — REST endpoints for holdings, dividend history, reinvestment log
+- [x] Component: api-rules — REST endpoints for CRUD on user reinvestment rules
 
 ### Phase 4 — Frontend
-- [ ] Component: frontend-api-client — Typed fetch wrapper for backend API calls
-- [ ] Component: frontend-auth — Sign-up and login pages
-- [ ] Component: frontend-dashboard — Portfolio overview, dividend history, reinvestment log
-- [ ] Component: frontend-rules — Rules management UI
+- [x] Component: frontend-api-client — Typed fetch wrapper for backend API calls
+- [x] Component: frontend-auth — Sign-up and login pages
+- [x] Component: frontend-dashboard — Portfolio overview, dividend history, reinvestment log
+- [x] Component: frontend-rules — Rules management UI
 
 ---
 

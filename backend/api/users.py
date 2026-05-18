@@ -1,7 +1,5 @@
-import os
 from datetime import datetime
 
-from cryptography.fernet import Fernet
 from fastapi import APIRouter, Depends, HTTPException, status
 from pydantic import BaseModel
 from sqlalchemy import select
@@ -9,12 +7,11 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from backend.auth.middleware import get_current_user
 from backend.auth.schemas import UserResponse
+from backend.crypto import decrypt, encrypt
 from backend.db.models import AlpacaCredential, User
 from backend.db.session import get_db
 
 router = APIRouter(prefix="/users", tags=["users"])
-
-_fernet = Fernet(os.environ["CREDENTIAL_ENCRYPTION_KEY"].encode())
 
 
 class CredentialRequest(BaseModel):
@@ -43,8 +40,8 @@ async def upsert_credentials(
     if not body.base_url.startswith("https://"):
         raise HTTPException(status_code=status.HTTP_422_UNPROCESSABLE_ENTITY, detail="base_url must use HTTPS")
 
-    encrypted_api_key = _fernet.encrypt(body.api_key.encode())
-    encrypted_secret_key = _fernet.encrypt(body.secret_key.encode())
+    encrypted_api_key = encrypt(body.api_key)
+    encrypted_secret_key = encrypt(body.secret_key)
 
     credential = await db.scalar(
         select(AlpacaCredential).where(AlpacaCredential.user_id == current_user.id)
