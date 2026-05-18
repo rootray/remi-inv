@@ -1,0 +1,132 @@
+{
+  "project": "DRIP Investing",
+  "orchestration_file": "backend/main.py",
+  "components": [
+    {
+      "name": "auth-register",
+      "file": "backend/auth/register.py",
+      "purpose": "Handle user sign-up, password hashing, account creation",
+      "status": "not-started",
+      "connects_to": ["db-models", "db-session"]
+    },
+    {
+      "name": "auth-login",
+      "file": "backend/auth/login.py",
+      "purpose": "Handle login, issue JWT tokens",
+      "status": "not-started",
+      "connects_to": ["db-models", "db-session"]
+    },
+    {
+      "name": "auth-middleware",
+      "file": "backend/auth/middleware.py",
+      "purpose": "Validate JWT on protected routes",
+      "status": "not-started",
+      "connects_to": ["auth-login"]
+    },
+    {
+      "name": "alpaca-client",
+      "file": "backend/alpaca/client.py",
+      "purpose": "Initialise authenticated Alpaca SDK instance per user",
+      "status": "not-started",
+      "connects_to": ["db-models", "db-session"]
+    },
+    {
+      "name": "alpaca-portfolio",
+      "file": "backend/alpaca/portfolio.py",
+      "purpose": "Fetch user holdings and positions from Alpaca",
+      "status": "not-started",
+      "connects_to": ["alpaca-client"]
+    },
+    {
+      "name": "alpaca-dividends",
+      "file": "backend/alpaca/dividends.py",
+      "purpose": "Detect dividend activity from Alpaca account history",
+      "status": "not-started",
+      "connects_to": ["alpaca-client"]
+    },
+    {
+      "name": "alpaca-orders",
+      "file": "backend/alpaca/orders.py",
+      "purpose": "Place and track reinvestment buy orders via Alpaca",
+      "status": "not-started",
+      "connects_to": ["alpaca-client", "db-models", "db-session"]
+    },
+    {
+      "name": "rules-engine",
+      "file": "backend/rules/engine.py",
+      "purpose": "Evaluate user rules to decide whether/how to reinvest a dividend",
+      "status": "not-started",
+      "connects_to": ["db-models", "db-session"]
+    },
+    {
+      "name": "drip-scheduler",
+      "file": "backend/jobs/drip_scheduler.py",
+      "purpose": "Celery periodic task: poll for new dividends, trigger reinvestment",
+      "status": "not-started",
+      "connects_to": ["alpaca-dividends", "rules-engine", "alpaca-orders"]
+    },
+    {
+      "name": "api-users",
+      "file": "backend/api/users.py",
+      "purpose": "REST endpoints: get/update user profile and Alpaca credentials",
+      "status": "not-started",
+      "connects_to": ["auth-middleware", "db-models", "db-session"]
+    },
+    {
+      "name": "api-portfolio",
+      "file": "backend/api/portfolio.py",
+      "purpose": "REST endpoints: holdings, dividend history, reinvestment log",
+      "status": "not-started",
+      "connects_to": ["auth-middleware", "alpaca-portfolio", "db-models", "db-session"]
+    },
+    {
+      "name": "api-rules",
+      "file": "backend/api/rules.py",
+      "purpose": "REST endpoints: CRUD for user reinvestment rules",
+      "status": "not-started",
+      "connects_to": ["auth-middleware", "db-models", "db-session"]
+    },
+    {
+      "name": "db-models",
+      "file": "backend/db/models.py",
+      "purpose": "SQLAlchemy ORM models: User, AlpacaCredential, Rule, ReinvestmentLog",
+      "status": "not-started",
+      "connects_to": ["db-session"]
+    },
+    {
+      "name": "db-session",
+      "file": "backend/db/session.py",
+      "purpose": "Database connection pool and session factory",
+      "status": "not-started",
+      "connects_to": []
+    },
+    {
+      "name": "frontend-auth",
+      "file": "frontend/app/(auth)/",
+      "purpose": "Sign-up and login pages",
+      "status": "not-started",
+      "connects_to": ["frontend-api-client"]
+    },
+    {
+      "name": "frontend-dashboard",
+      "file": "frontend/app/dashboard/",
+      "purpose": "Portfolio overview, dividend history, reinvestment log",
+      "status": "not-started",
+      "connects_to": ["frontend-api-client"]
+    },
+    {
+      "name": "frontend-rules",
+      "file": "frontend/app/rules/",
+      "purpose": "Rules management UI",
+      "status": "not-started",
+      "connects_to": ["frontend-api-client"]
+    },
+    {
+      "name": "frontend-api-client",
+      "file": "frontend/lib/api.ts",
+      "purpose": "Typed fetch wrapper for all backend API calls",
+      "status": "not-started",
+      "connects_to": []
+    }
+  ]
+}
